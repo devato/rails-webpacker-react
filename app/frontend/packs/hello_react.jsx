@@ -5,9 +5,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import RailsReactImage from '../images/rails-react.png'
 
 const Hello = props => (
-  <div>Hello {props.name}!</div>
+  <div>
+    Hello {props.name}!
+    <br/>
+    <img src={RailsReactImage} width="200"/>
+  </div>
 )
 
 Hello.defaultProps = {
@@ -20,7 +25,7 @@ Hello.propTypes = {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <Hello name="React"/>,
     document.body.appendChild(document.createElement('div')),
   )
 })
