@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  namespace :app do
-    get 'dashboard/index'
+
+  # should come before public root
+  authenticated :user do
+    root 'app/dashboard#index'
   end
-  devise_for :users
+
   root 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
 end
