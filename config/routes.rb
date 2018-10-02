@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # should come before public root
   authenticated :user do
     root 'app/dashboard#index'
+    match "*path", to: 'app/dashboard#index', via: :get
   end
 
   root 'pages#home'

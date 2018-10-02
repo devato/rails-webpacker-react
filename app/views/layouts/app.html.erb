@@ -4,11 +4,11 @@
     <title>RailsWebpacker Dashboard</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_pack_tag 'app' %>
+    <%= javascript_pack_tag 'app', defer: true%>
     <%= stylesheet_pack_tag 'app' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="root"></div>
   </body>
 </html>
