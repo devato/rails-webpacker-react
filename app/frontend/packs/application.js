@@ -1,12 +1,8 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import '@blueprintjs/icons/lib/css/blueprint-icons.css'
+import '@blueprintjs/core/lib/css/blueprint.css'
+import '../application/assets/styles/application-styles'
+import Rails from 'rails-ujs'
 
-import '../styles/app'
+Rails.start();
 
-console.log('Hello World from Webpacker')
+console.log('Application Pack')

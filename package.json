@@ -2,9 +2,11 @@
   "name": "rails-webpacker",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.6.1",
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.2",
+    "rails-ujs": "^5.2.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
