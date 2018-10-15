@@ -1,27 +1,24 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
+import { Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
-import PageWrapper from '../PageWrapper'
-import Dashboard from '../Dashboard'
-import PostsIndex from '../Posts'
+import PageWrapper from 'components/PageWrapper'
+import Dashboard from 'components/Dashboard'
+
+import PostsIndex from 'components/Posts'
+import PostNew from 'components/Posts/PostNew'
 
 class App extends Component {
 
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Route exact path='/' render={() => (
-            <PageWrapper>
-              <Dashboard />
-            </PageWrapper>
-            )} />
-          <Route path='/posts' render={() => (
-            <PageWrapper>
-              <PostsIndex />
-            </PageWrapper>
-            )} />
-        </div>
+        <PageWrapper>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/posts" component={PostsIndex} />
+            <Route path="/posts/new" component={PostNew} />
+          </Switch>
+        </PageWrapper>
       </BrowserRouter>
     )
   }

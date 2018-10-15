@@ -9,6 +9,7 @@ gem 'puma', '~> 3.12'
 gem 'webpacker', "~> 3.5"
 gem 'devise', "~> 4.5"
 gem 'bootsnap', '~> 1.3', require: false
+gem 'fast_jsonapi'
 
 group :development, :test do
   gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]

@@ -4,6 +4,7 @@
   "dependencies": {
     "@blueprintjs/core": "^3.6.1",
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.2",
     "rails-ujs": "^5.2.1",
