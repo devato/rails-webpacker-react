@@ -2,26 +2,22 @@ class PostsController < ApplicationController
   respond_to :json
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts
   def index
     @posts = current_user.posts
     respond_with(@posts)
   end
 
-  # GET /posts/1
   def show
+    respond_with(@post, status: :ok)
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
   end
 
-  # POST /posts
   def create
     @post = Post.new(post_params)
     current_user.posts << @post
@@ -32,20 +28,19 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
-      respond_with(@post, status: :created, location: '/posts')
+      respond_with(@post, status: :ok, location: '/posts')
     else
-      render :edit
+      render json: { errors: @post.errors.full_messages }, status: :unprocessible_entity
     end
   end
 
-  # DELETE /posts/1
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    respond_with(@post, status: :created, location: '/posts')
+  rescue => e
+    render json: { errors: { error: e.message } }, status: :unprocessible_entity
   end
 
   private

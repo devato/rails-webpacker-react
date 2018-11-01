@@ -5,7 +5,7 @@ import PageWrapper from 'components/PageWrapper'
 import Dashboard from 'components/Dashboard'
 
 import PostsIndex from 'components/Posts'
-import PostNew from 'components/Posts/PostNew'
+import PostForm from 'components/Posts/PostForm'
 
 class App extends Component {
 
@@ -16,7 +16,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/posts" component={PostsIndex} />
-            <Route path="/posts/new" component={PostNew} />
+            <Route path="/posts/:id" component={PostForm} />
+            <Route path="/posts/new" component={PostForm} />
           </Switch>
         </PageWrapper>
       </BrowserRouter>

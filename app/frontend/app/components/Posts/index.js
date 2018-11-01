@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { HTMLTable, Callout, Intent, Spinner } from "@blueprintjs/core";
-import { clientGet } from 'modules/client'
+import { clientGet, clientDelete } from 'modules/client'
 import PostRow from 'components/Posts/PostRow'
 
 class PostsIndex extends React.Component {
@@ -31,6 +31,22 @@ class PostsIndex extends React.Component {
       })
   }
 
+  handleDelete = id => {
+    this.setState({ loading: true })
+    const { posts } = this.state
+    clientDelete(`/posts/${id}`)
+      .then(response => {
+        this.setState({
+          loading: false,
+          posts: posts.filter(p => p.id != id),
+          message: 'Successfully deleted post'
+        })
+      })
+      .catch(errorMessage => {
+        this.setState({errorMessage: errorMessage})
+      })
+  }
+
   render() {
     const { errorMessage, message, loading, posts } = this.state
     if (loading) {
@@ -47,11 +63,12 @@ class PostsIndex extends React.Component {
               <tr>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               { posts.length > 0
-                ? posts.map((post, index) => <PostRow post={post} key={index} /> )
+                ? posts.map((post, index) => <PostRow post={post} key={index} handleDelete={this.handleDelete} /> )
                 : <tr key={0}><td>No posts</td></tr>
               }
             </tbody>
